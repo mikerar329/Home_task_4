@@ -6,7 +6,11 @@ import com.sapozhnikov.taxistation.domain.PassengersTransportation;
 import com.sapozhnikov.taxistation.domain.Vehicle;
 import com.sapozhnikov.taxistation.exception.VehicleSeatsCountException;
 
+
+import org.apache.log4j.Logger;
+
 public class Car extends Vehicle implements PassengersTransportation {
+//    static final  Logger logger = Logger.getLogger(Vehicle.class);
 
     private Integer numberOfSeats;
     private Integer currentPassengersCount;

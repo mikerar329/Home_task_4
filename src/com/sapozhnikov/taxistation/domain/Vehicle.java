@@ -3,12 +3,15 @@ package com.sapozhnikov.taxistation.domain;
 import com.sapozhnikov.taxistation.domain.impl.Car;
 import com.sapozhnikov.taxistation.domain.impl.Truck;
 import com.sapozhnikov.taxistation.domain.impl.Van;
+import org.apache.log4j.Logger;
 
 import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 abstract public class Vehicle implements Serializable {
+
+   static final Logger logger = Logger.getLogger(Vehicle.class);
     private Manufacturer manufacturer;
     private Model model;
     private Integer year;
@@ -84,42 +87,44 @@ abstract public class Vehicle implements Serializable {
         Pattern manufacturer = Pattern.compile("manufacturer = ([^,]*|$)");
         Matcher manufacturerMatcher = manufacturer.matcher(string);
         boolean manufacturerFound = manufacturerMatcher.find();
+
         Pattern model = Pattern.compile("model = ([^,]*|$)");
         Matcher modelMatcher = model.matcher(string);
         boolean modelFound = modelMatcher.find();
+
         Pattern year = Pattern.compile("year = ([^,]*|$)");
         Matcher yearMatcher = year.matcher(string);
         boolean yearFound = yearMatcher.find();
+
         Pattern price = Pattern.compile("price = ([^,]*|$)");
         Matcher priceMatcher = price.matcher(string);
         boolean priceFound = priceMatcher.find();
+
         Pattern mileage = Pattern.compile("mileage = ([^,]*|$)");
         Matcher mileageMatcher = mileage.matcher(string);
         boolean mileageFound = mileageMatcher.find();
+
         Pattern fuelConsumption = Pattern.compile("fuelConsumption = ([^,]*|$)");
         Matcher fuelConsumptionMatcher = fuelConsumption.matcher(string);
         boolean fuelConsumptionFound = fuelConsumptionMatcher.find();
+
         Pattern numberOfSeats = Pattern.compile("numberOfSeats = ([^,]*|$)");
         Matcher numberOfSeatsMatcher = numberOfSeats.matcher(string);
         boolean numberOfSeatsFound = numberOfSeatsMatcher.find();
+
         Pattern cargoPlaces = Pattern.compile("cargoPlaces = ([^,]*|$)");
         Matcher cargoPlacesMatcher = cargoPlaces.matcher(string);
         boolean cargoPlacesFound = cargoPlacesMatcher.find();
+
         Pattern currentPassengersCount = Pattern.compile("currentPassengersCount = ([^,]*|$)");
         Matcher currentPassengersCountMatcher = currentPassengersCount.matcher(string);
         boolean currentPassengersCountFound = currentPassengersCountMatcher.find();
+
         Pattern currentCargoCount = Pattern.compile("currentCargoCount = ([^,]*|$)");
         Matcher currentCargoCountMatcher = currentCargoCount.matcher(string);
         boolean currentCargoCountFound = currentCargoCountMatcher.find();
 
 
-
-//        System.out.println(manufacturerMatcher.find() );
-//        System.out.println(modelMatcher.find());
-//        System.out.println(yearMatcher.find());
-//        System.out.println(priceMatcher.find());
-//        System.out.println(mileageMatcher.find());
-//        System.out.println(fuelConsumptionMatcher.find());
         if (manufacturerFound &&
                 modelFound &&
                 yearFound &&
